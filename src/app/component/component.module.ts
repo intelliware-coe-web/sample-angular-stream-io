@@ -4,19 +4,20 @@ import {DescriptionListComponent} from './description-list/description-list.comp
 import {SpinnerComponent} from './spinner/spinner.component';
 import {BrowserModule} from '@angular/platform-browser';
 
+const exportable = [
+  SearchComponent,
+  DescriptionListComponent,
+  SpinnerComponent,
+];
+
 @NgModule({
   declarations: [
-    SearchComponent,
-    DescriptionListComponent,
-    SpinnerComponent,
+    ...exportable
   ],
   imports: [
     BrowserModule
   ],
-  exports: [
-    SearchComponent,
-    DescriptionListComponent,
-    SpinnerComponent,
-  ]
+  exports: exportable
 })
-export class ComponentModule { }
+export class ComponentModule {
+}
