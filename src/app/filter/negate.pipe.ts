@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators';
 })
 export class NegatePipe implements PipeTransform {
 
-  transform(value: Observable<boolean>, args?: any): Observable<boolean> {
+  transform(value: Observable<boolean>): Observable<boolean> {
     return value.pipe(
       map(booleanValue => !booleanValue)
     );
