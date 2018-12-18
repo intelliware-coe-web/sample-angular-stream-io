@@ -1,27 +1,24 @@
 # SampleAngularStreamIo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
+Sample Angular Application using Stream I/O patterns.
 
-## Development server
+## Notes:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. HTML > JS
+1. Use a component library!
+1. Containers are components that *compose* components. They should be responsible for passing data between effects and components.
+1. Services should contain functions that take in an input observable called a Source and return output observables called a Sink.
+1. Most components should be readonly and presentational. Components should take in values.
+1. Separate infrastructure from domain. Domain services that *request* "side effects" are known as effects.
+1. Effects should be the only things interacting with infrastructure.
+1. Testing is painful. Less JS, less testing.
+1. Don't use `tap` or `subscribe`.
+1. Angular Upgrade should only affect Infrastructure components
+  1. Presentational components mostly immune due to simplicity.
+  1. Effects mostly immune due as they are purely functional, but interactions with infrastructure may require changes.
+  1. Containers immune due to interaction with domain effects and domain models.
+1. Try to keep things as single responsible as possible. See `hideSpinner$` coupling.
 
-## Code scaffolding
+## Questions
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Can we avoid `Subject`s completely by interacting with the `EventEmitters` directly and avoiding the callbacks?
