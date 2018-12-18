@@ -15,5 +15,5 @@ import {SearchResult} from '../../model/SearchResult';
   `
 })
 export class DescriptionListComponent {
-  @Input() results: SearchResult[];
+  @Input() readonly results: SearchResult[];
 }

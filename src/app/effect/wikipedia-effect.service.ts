@@ -8,7 +8,7 @@ import {SearchResult} from '../model/SearchResult';
   providedIn: 'root'
 })
 export class WikipediaEffectService {
-  constructor(private fetch: FetchService) {
+  constructor(private readonly fetch: FetchService) {
   }
 
   public findArticles(search$): Observable<any> {

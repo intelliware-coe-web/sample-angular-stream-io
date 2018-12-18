@@ -11,7 +11,7 @@ export class FetchService {
     return `http://localhost:8080/${url}`;
   }
 
-  constructor(private http$: HttpClient) {
+  constructor(private readonly http$: HttpClient) {
   }
 
   public request(url: string) {

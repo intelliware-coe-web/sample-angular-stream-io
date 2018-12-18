@@ -9,6 +9,5 @@ import {Component, EventEmitter, Output} from '@angular/core';
     </form>`
 })
 export class SearchComponent {
-  @Output()
-  public search: EventEmitter<string> = new EventEmitter();
+  @Output() readonly search: EventEmitter<string> = new EventEmitter();
 }

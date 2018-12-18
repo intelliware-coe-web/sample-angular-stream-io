@@ -8,13 +8,14 @@ import {merge, Observable, Subject} from 'rxjs';
   templateUrl: './home-container.component.html',
 })
 export class HomeContainerComponent {
-  private readonly search$ = new Subject<string>();
+  private readonly search$: Subject<string>;
 
   readonly hideSpinner$: Observable<boolean>;
   readonly searchResults$: Observable<any>;
 
-  constructor(private wikipediaEffect: WikipediaEffectService) {
-    this.searchResults$ = this.wikipediaEffect.findArticles(this.search$);
+  constructor(readonly wikipediaEffect: WikipediaEffectService) {
+    this.search$ = new Subject<string>();
+    this.searchResults$ = wikipediaEffect.findArticles(this.search$);
 
     this.hideSpinner$ = merge(
       this.search$.pipe(map(() => false)),

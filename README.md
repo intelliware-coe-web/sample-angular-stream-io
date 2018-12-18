@@ -18,6 +18,7 @@ Sample Angular Application using Stream I/O patterns.
    1. Effects mostly immune due as they are purely functional, but interactions with infrastructure may require changes.
    1. Containers immune due to interaction with domain effects and domain models.
 1. Try to keep things as single responsible as possible. See `hideSpinner$` coupling.
+1. Avoid passing around `Subjects`, convert them to observables with `asObservables`.
 
 ## Questions
 
