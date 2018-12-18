@@ -1,1 +1,7 @@
-<app-search (search)="onSearch($event)"></app-search>
+<div>
+  <app-search (search)="onSearch($event)"></app-search>
+  <app-spinner [isHidden]="hideSpinner$ | async"></app-spinner>
+  <div class="uk-padding">
+    <app-description-list [hidden]="hideSpinner$ | negate | async" [results]="searchResults$ | async"></app-description-list>
+  </div>
+</div>
