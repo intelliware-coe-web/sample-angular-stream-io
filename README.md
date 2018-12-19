@@ -1,6 +1,6 @@
 # SampleAngularStreamIo
 
-Sample Angular Application using Stream I/O patterns.
+Sample Angular Application using Stream I/O patterns. This is a good pattern to adopt, but not subscribe.
 
 ## Notes:
 
