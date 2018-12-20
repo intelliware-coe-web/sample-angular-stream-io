@@ -20,6 +20,12 @@ Sample Angular Application using Stream I/O patterns. This is a good pattern to 
 1. Try to keep things as single responsible as possible. See `hideSpinner$` coupling.
 1. Avoid passing around `Subjects`, convert them to observables with `asObservables`.
 
+## Data Flow
+
+![stream i/o sequence](https://github.com/intelliware-coe-web/sample-angular-stream-io/blob/master/docs/Stream%20I_O%20Sequence.png?raw=true)
+
+Upon inspection, the arrows are pointing the wrong way. Gotta fix this!
+
 ## Questions
 
 1. Can we avoid `Subject`s completely by interacting with the `EventEmitters` directly and avoiding the callbacks?
