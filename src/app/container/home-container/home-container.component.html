@@ -1,4 +1,7 @@
 <div>
+  <nav>
+    <a routerLink="list">Go to list</a>
+  </nav>
   <app-search (search)="onSearch($event)"></app-search>
   <div class="uk-padding">
     <app-spinner [hidden]="hideSpinner$ | async"></app-spinner>

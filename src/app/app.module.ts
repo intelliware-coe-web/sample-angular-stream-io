@@ -7,12 +7,14 @@ import {HomeContainerComponent} from './container/home-container/home-container.
 import {HttpClientModule} from '@angular/common/http';
 import {NegatePipe} from './filter/negate.pipe';
 import {ComponentModule} from './component/component.module';
+import { ListContainerComponent } from './container/list-container/list-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeContainerComponent,
-    NegatePipe
+    NegatePipe,
+    ListContainerComponent
   ],
   imports: [
     BrowserModule,
