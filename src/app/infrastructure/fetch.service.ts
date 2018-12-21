@@ -11,13 +11,12 @@ export class FetchService {
     return `http://localhost:8080/${url}`;
   }
 
-  constructor(private readonly http$: HttpClient) {
-  }
+  constructor(private readonly http$: HttpClient) {}
 
   public request(url: string) {
     return of(url).pipe(
-      map(href => FetchService.proxyRequests(href)),
-      switchMap(request => this.http$.get(request)),
+      map(FetchService.proxyRequests),
+      switchMap(this.http$.get.bind(this.http$)),
     );
   }
 

@@ -13,9 +13,9 @@ export class WikipediaEffectService {
 
   public findArticles(search$): Observable<any> {
     return search$.pipe(
-      debounce(() => timer(1000)),
+      debounce(timer.bind(null, 1000)),
       map(search => `http://en.wikipedia.org/w/api.php?action=opensearch&search=${search}`),
-      switchMap(url => this.fetch.request.call(this.fetch, url)),
+      switchMap(this.fetch.request.bind(this.fetch)),
       map(this.adaptResult)
     );
   }
