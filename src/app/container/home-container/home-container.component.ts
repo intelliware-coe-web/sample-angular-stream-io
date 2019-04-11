@@ -1,30 +1,28 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {WikipediaEffectService} from '../../effect/wikipedia-effect.service';
 import {map, startWith} from 'rxjs/operators';
-import {merge, Observable, Subject} from 'rxjs';
+import {defer, merge, Observable} from 'rxjs';
 import {always} from 'ramda';
+import {SearchComponent} from '../../component/search/search.component';
 
 @Component({
   selector: 'app-home-container',
   templateUrl: './home-container.component.html',
 })
 export class HomeContainerComponent {
-  private readonly search$: Subject<string>;
+  @ViewChild(SearchComponent)
+  readonly searchComponent: SearchComponent;
 
   readonly hideSpinner$: Observable<boolean|any>;
   readonly searchResults$: Observable<any>;
 
   constructor(readonly wikipediaEffect: WikipediaEffectService) {
-    this.search$ = new Subject<string>();
-    this.searchResults$ = wikipediaEffect.findArticles(this.search$);
+    const search$ = defer(() => this.searchComponent.search);
+    this.searchResults$ = wikipediaEffect.findArticles(search$);
 
     this.hideSpinner$ = merge(
-      this.search$.pipe(map(always(false))),
+      search$.pipe(map(always(false))),
       this.searchResults$.pipe(map(always(true))),
     ).pipe(startWith(true));
-  }
-
-  onSearch(search) {
-    this.search$.next(search);
   }
 }
